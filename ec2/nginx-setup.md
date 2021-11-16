@@ -18,8 +18,7 @@
             yum install -y httpd
             systemctl start httpd
             systemctl enable httpd
-
-            echo "Hello from ${hostname -f}" > /var/www/html/index.html
+            echo "Hello from $(hostname -f)" > /var/www/html/index.html
             ```
     - Select Elastic Block Storage
         - EBS is used to create storage volumes that attach to EC2 virtual machines. With EBS we can create filesystems, run databases and other cool stuff.
@@ -30,11 +29,11 @@
     - Select/Create Tags & Security Group
         - Tags help you control costs. They help you see where your AWS costs are coming from. Tag everything and tag as much as possible.
         - Security Groups are virtual firewalls. The Security Rules define what type of traffic we want to allow through. We want to SSH into our EC2 so we can do things like install Apache. We want to view the website so we’ll allow HTTP and HTTPS.
-    ![](../images/ec2/ec2-launch-tags.png)
-    ![](../images/ec2/ec2-launch-sgs.png)
+        ![](../images/ec2/ec2-launch-tags.png)
+        ![](../images/ec2/ec2-launch-sgs.png)
     - Review and Launch
-    ![](../images/ec2/ec2-launch-review.png)
-    ![](../images/ec2/ec2-launch-generate-key.png)
+        ![](../images/ec2/ec2-launch-review.png)
+        ![](../images/ec2/ec2-launch-generate-key.png)
     - Wiat for the instance to be up and than test it out.
         ![](../images/ec2/ec2-instance-running.png)
         ![](../images/ec2/ec2-instance-test.png)
@@ -43,8 +42,9 @@
         - Connect via SSH CLI
             ```
             $ mkdir SSH
-            $ mv EC2KeyPair.pem SSH
+            $ mv `awslearn.pem` SSH
             $ cd SSH
-            $ chmod 400 EC2KeyPair.pem
-            $ ssh ec2-user@35.164.212.151 -i EC2KeyPair.pem
+            $ chmod 400 `awslearn.pem`
+            $ ssh -i EC2KeyPair.pem ec2-user@35.167.216.64
             ```
+            ![](../images/ec2/ec2-instance-ssh.png)

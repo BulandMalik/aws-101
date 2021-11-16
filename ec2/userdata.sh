@@ -10,5 +10,5 @@ systemctl enable httpd
 #chmod 2775 /var/www
 #find /var/www -type d -exec chmod 2775 {} \;
 
-echo "Hello from ${hostname -f}" > /var/www/html/index.html
+echo "Hello from $(hostname -f)" > /var/www/html/index.html
 #sudo yum install nginx
